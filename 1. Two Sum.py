@@ -33,21 +33,28 @@ Follow-up: Can you come up with an algorithm that is less than O(n2) time comple
 from typing import List
 
 class Solution:
+    # Brute-force solution: Checks all possible pairs
     def twoSumSlow(self, nums: List[int], target: int) -> List[int]:
-        
+        # Iterate over all elements in nums
         for i in range(len(nums)):
+            # For each element, iterate over all other elements
             for j in range(len(nums)):
-                
-                if i == j :
+                # Skip if it's the same element
+                if i == j:
                     continue
-
+                
+                # Check if the sum of nums[i] and nums[j] equals the target
                 if nums[i] + nums[j] == target:
+                    # Return the indices if a match is found
                     return [i, j]
     
+    # Improved solution: Avoids redundant comparisons
     def twoSumFast(self, nums: List[int], target: int) -> List[int]:
-        
+        # Iterate over all elements in nums
         for i in range(len(nums)):
-            for j in range(i+1, len(nums), 1):
-
+            # Only check elements after the current index
+            for j in range(i + 1, len(nums)):
+                # Check if the sum of nums[i] and nums[j] equals the target
                 if nums[i] + nums[j] == target:
+                    # Return the indices if a match is found
                     return [i, j]
